@@ -1,0 +1,21 @@
+# Time Tracking Application - Python Dependencies
+# Install with: pip install -r requirements.txt
+
+# Database Connection
+pyodbc>=5.0.0              # SQL Server connectivity
+
+# GUI Framework (built into Python, no install needed)
+# tkinter - comes with Python installation
+
+# PDF Generation (for Phase 2)
+reportlab>=4.0.0           # PDF creation and formatting
+
+# Environment Variables
+python-dotenv>=1.0.0       # Load .env files
+
+# Date/Time Utilities
+python-dateutil>=2.8.0     # Date handling utilities
+
+# Optional - Data Validation
+# pydantic>=2.0.0          # Data validation if needed
+

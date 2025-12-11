@@ -1,5 +1,4 @@
-# Data Tune Solutions - Monorepo .gitignore
-# Applies to both data-tune-core/ and projects/ folders
+# Data Tune Solutions Core - .gitignore
 
 # === Credentials & Secrets ===
 .env
