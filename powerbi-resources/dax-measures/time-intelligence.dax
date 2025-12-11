@@ -1,0 +1,272 @@
+-- ================================================================
+-- Data Tune Solutions - Time Intelligence DAX Measures
+-- Use these measures as templates - adjust table/column names
+-- Requires a proper Date table with contiguous dates
+-- ================================================================
+
+-- ----------------------------------------------------------------
+-- Basic Aggregations (Adjust measure names and table references)
+-- ----------------------------------------------------------------
+Total Sales = SUM(Sales[Amount])
+
+Total Quantity = SUM(Sales[Quantity])
+
+Total Orders = COUNTROWS(Orders)
+
+-- ----------------------------------------------------------------
+-- Year-over-Year (YoY) Comparisons
+-- ----------------------------------------------------------------
+Sales Prior Year = 
+CALCULATE(
+    [Total Sales],
+    DATEADD('Date'[Date], -1, YEAR)
+)
+
+Sales YoY Growth = 
+VAR CurrentYear = [Total Sales]
+VAR PriorYear = [Sales Prior Year]
+RETURN
+    DIVIDE(CurrentYear - PriorYear, PriorYear, 0)
+
+Sales YoY Growth % = 
+FORMAT([Sales YoY Growth], "0.0%")
+
+Sales YoY Variance = 
+[Total Sales] - [Sales Prior Year]
+
+-- ----------------------------------------------------------------
+-- Month-over-Month (MoM) Comparisons  
+-- ----------------------------------------------------------------
+Sales Prior Month = 
+CALCULATE(
+    [Total Sales],
+    DATEADD('Date'[Date], -1, MONTH)
+)
+
+Sales MoM Growth = 
+VAR CurrentMonth = [Total Sales]
+VAR PriorMonth = [Sales Prior Month]
+RETURN
+    DIVIDE(CurrentMonth - PriorMonth, PriorMonth, 0)
+
+Sales MoM Growth % = 
+FORMAT([Sales MoM Growth], "0.0%")
+
+-- ----------------------------------------------------------------
+-- Month-to-Date (MTD) Calculations
+-- ----------------------------------------------------------------
+Sales MTD = 
+TOTALMTD(
+    [Total Sales],
+    'Date'[Date]
+)
+
+Sales MTD Prior Year = 
+CALCULATE(
+    [Sales MTD],
+    DATEADD('Date'[Date], -1, YEAR)
+)
+
+Sales MTD vs Prior Year = 
+[Sales MTD] - [Sales MTD Prior Year]
+
+-- ----------------------------------------------------------------
+-- Quarter-to-Date (QTD) Calculations
+-- ----------------------------------------------------------------
+Sales QTD = 
+TOTALQTD(
+    [Total Sales],
+    'Date'[Date]
+)
+
+Sales QTD Prior Year = 
+CALCULATE(
+    [Sales QTD],
+    DATEADD('Date'[Date], -1, YEAR)
+)
+
+-- ----------------------------------------------------------------
+-- Year-to-Date (YTD) Calculations
+-- ----------------------------------------------------------------
+Sales YTD = 
+TOTALYTD(
+    [Total Sales],
+    'Date'[Date]
+)
+
+Sales YTD Prior Year = 
+CALCULATE(
+    [Sales YTD],
+    DATEADD('Date'[Date], -1, YEAR)
+)
+
+Sales YTD vs Prior Year = 
+[Sales YTD] - [Sales YTD Prior Year]
+
+Sales YTD Growth % = 
+DIVIDE(
+    [Sales YTD vs Prior Year],
+    [Sales YTD Prior Year],
+    0
+)
+
+-- ----------------------------------------------------------------
+-- Rolling/Moving Averages
+-- ----------------------------------------------------------------
+Sales Last 30 Days = 
+VAR LastDate = MAX('Date'[Date])
+VAR FirstDate = LastDate - 30
+RETURN
+    CALCULATE(
+        [Total Sales],
+        DATESBETWEEN('Date'[Date], FirstDate, LastDate)
+    )
+
+Sales Rolling 3 Month Avg = 
+CALCULATE(
+    AVERAGEX(
+        VALUES('Date'[Year-Month]),
+        [Total Sales]
+    ),
+    DATESINPERIOD('Date'[Date], LASTDATE('Date'[Date]), -3, MONTH)
+)
+
+Sales Rolling 12 Month = 
+CALCULATE(
+    [Total Sales],
+    DATESINPERIOD('Date'[Date], LASTDATE('Date'[Date]), -12, MONTH)
+)
+
+-- ----------------------------------------------------------------
+-- Same Period Last Year (SPLY)
+-- ----------------------------------------------------------------
+Sales SPLY = 
+CALCULATE(
+    [Total Sales],
+    SAMEPERIODLASTYEAR('Date'[Date])
+)
+
+-- ----------------------------------------------------------------
+-- Cumulative/Running Totals
+-- ----------------------------------------------------------------
+Sales Running Total = 
+CALCULATE(
+    [Total Sales],
+    FILTER(
+        ALL('Date'[Date]),
+        'Date'[Date] <= MAX('Date'[Date])
+    )
+)
+
+-- Cumulative sales for current year only
+Sales YTD Running = 
+VAR MaxDate = MAX('Date'[Date])
+VAR CurrentYear = YEAR(MaxDate)
+RETURN
+    CALCULATE(
+        [Total Sales],
+        FILTER(
+            ALL('Date'),
+            'Date'[Date] <= MaxDate &&
+            YEAR('Date'[Date]) = CurrentYear
+        )
+    )
+
+-- ----------------------------------------------------------------
+-- Period Comparisons (Flexible)
+-- ----------------------------------------------------------------
+Sales Prior Period = 
+-- Works for any level: day, month, quarter, year
+CALCULATE(
+    [Total Sales],
+    PREVIOUSMONTH('Date'[Date])  -- Change to PREVIOUSQUARTER or PREVIOUSYEAR
+)
+
+-- ----------------------------------------------------------------
+-- First/Last Date in Period
+-- ----------------------------------------------------------------
+First Sale Date = 
+MIN(Sales[OrderDate])
+
+Last Sale Date = 
+MAX(Sales[OrderDate])
+
+Days Since Last Sale = 
+DATEDIFF([Last Sale Date], TODAY(), DAY)
+
+-- ----------------------------------------------------------------
+-- Working Days Calculations (excluding weekends)
+-- ----------------------------------------------------------------
+Working Days MTD = 
+VAR StartOfMonth = STARTOFMONTH('Date'[Date])
+VAR CurrentDate = MAX('Date'[Date])
+RETURN
+    CALCULATE(
+        COUNTROWS('Date'),
+        DATESBETWEEN('Date'[Date], StartOfMonth, CurrentDate),
+        'Date'[IsWeekday] = TRUE  -- Assumes IsWeekday column in Date table
+    )
+
+Sales Per Working Day = 
+DIVIDE(
+    [Sales MTD],
+    [Working Days MTD],
+    0
+)
+
+-- ----------------------------------------------------------------
+-- Dynamic Time Intelligence (Parameter-driven)
+-- ----------------------------------------------------------------
+-- Requires a parameter table with selections like "MTD", "YTD", "Last 30 Days"
+Sales Dynamic Period = 
+VAR SelectedPeriod = SELECTEDVALUE('Period Selection'[Period])
+RETURN
+    SWITCH(
+        SelectedPeriod,
+        "MTD", [Sales MTD],
+        "QTD", [Sales QTD],
+        "YTD", [Sales YTD],
+        "Last 30 Days", [Sales Last 30 Days],
+        "Last 12 Months", [Sales Rolling 12 Month],
+        [Total Sales]  -- Default
+    )
+
+-- ----------------------------------------------------------------
+-- Fiscal Year Calculations (Adjust fiscal year start month)
+-- ----------------------------------------------------------------
+-- Assumes FiscalYear and FiscalMonth columns in Date table
+Sales Fiscal YTD = 
+CALCULATE(
+    [Total Sales],
+    FILTER(
+        ALL('Date'),
+        'Date'[FiscalYear] = MAX('Date'[FiscalYear]) &&
+        'Date'[FiscalMonth] <= MAX('Date'[FiscalMonth])
+    )
+)
+
+-- ================================================================
+-- Notes:
+-- - Ensure Date table has continuous dates with no gaps
+-- - Mark Date table as Date table in model
+-- - All relationships should use Date[Date] column
+-- - Test with different time selections (day, month, year)
+-- - Use variables for better performance and readability
+-- ================================================================
+
+-- ----------------------------------------------------------------
+-- Date Table Requirements Checker (Diagnostic)
+-- ----------------------------------------------------------------
+-- Use this to verify your Date table is properly configured
+Date Table Row Count = COUNTROWS('Date')
+
+Date Table First Date = MIN('Date'[Date])
+
+Date Table Last Date = MAX('Date'[Date])
+
+Date Table Has Gaps = 
+VAR ExpectedDays = DATEDIFF([Date Table First Date], [Date Table Last Date], DAY) + 1
+VAR ActualDays = [Date Table Row Count]
+RETURN
+    IF(ExpectedDays = ActualDays, "No Gaps", "Has Gaps - Fix Date Table!")
+

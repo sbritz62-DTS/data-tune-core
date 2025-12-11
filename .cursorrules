@@ -1,0 +1,106 @@
+# Data Tune Solutions - Business Context
+
+## Company Information
+- **Name**: Data Tune Solutions
+- **Industry**: Data Engineering & Analytics Consulting
+- **Primary Services**: Data pipeline development, data visualization, business intelligence solutions
+- **Tech Stack**: 
+  - **Primary**: Azure Data Factory, Power BI, SQL Server, Microsoft Fabric
+  - **Secondary**: BigQuery, Snowflake
+  - **Languages**: SQL (T-SQL, DAX, M/Power Query), Python (learning/future)
+- **Team Size**: Solo consultant
+
+## Business Philosophy & Approach
+- **Decision-Making Framework**: 
+  - Prioritize data quality and pipeline reliability
+  - Choose managed services over custom solutions when possible
+  - Focus on maintainable, well-documented code
+  - Separate dev and production environments for Power BI
+  
+- **Code Standards**: 
+  - Clear, descriptive naming conventions
+  - SQL: Use CTEs over nested subqueries for readability
+  - Comment complex transformations and business logic
+  - Modular approach - create reusable components
+  
+- **Documentation Requirements**: 
+  - Document data sources, transformations, and business logic
+  - Include connection requirements and dependencies
+  - Maintain data dictionaries for key datasets
+  - Track client-specific requirements
+  
+- **Version Control Philosophy**: 
+  - Version control SQL scripts, DAX measures, M queries
+  - Do NOT commit .pbix files (use dev/prod pattern instead)
+  - Do NOT commit actual data files (only schema/sample data if needed)
+  - Keep client credentials in .env files (never committed)
+
+## Common Project Patterns
+- **Data Pipeline Projects**: Extract → Transform → Load patterns using Azure Data Factory or SQL stored procedures
+- **Power BI Development**: Development .pbix → Testing → Production deployment
+- **Cross-Platform Integration**: Connecting Azure ecosystem to BigQuery/Snowflake sources
+- **Data Quality**: Implementing validation checks and monitoring
+
+## Communication Preferences
+- **Code Style**: Clear and well-commented, prefer readability over brevity
+- **Explanation Level**: Practical, applied explanations with real-world data context
+- **Default Mode**: Implement directly for standard patterns, ask for complex architectural decisions
+- **Examples**: Prefer concrete examples with sample data/schemas
+
+## Data Engineering Best Practices
+- Always consider data refresh schedules and dependencies
+- Plan for incremental loads when possible
+- Include error handling and logging in pipelines
+- Document data lineage and transformations
+- Consider performance implications (partitioning, indexing)
+- Separate credentials from code using environment variables or Azure Key Vault
+
+## Client Project Structure
+- Each client project is a separate Git repository
+- Maintain dev/test/prod separation
+- Include README with setup instructions and dependencies
+- Document connection strings format (without actual credentials)
+- Include any custom DAX measures or M queries as separate files
+
+## Current Focus Areas
+- Building reusable SQL and DAX pattern library
+- Exploring Python for data pipeline automation
+- Standardizing project setup and documentation
+- Establishing efficient dev-to-production workflows
+
+## Claude AI Workflow Rules
+
+### Task Management Process
+1. **Plan First**: Before starting any task, think through the problem, read relevant files, and create a plan in `tasks/todo.md`
+2. **Create Todo List**: The plan must include a checklist of specific todo items
+3. **Get Approval**: Present the plan and wait for verification before beginning work
+4. **Execute & Update**: Work through todo items, checking them off as completed
+5. **Communicate Progress**: Provide high-level explanations at each step (not overly detailed)
+6. **Document Results**: Add a review section to `tasks/todo.md` summarizing changes and relevant information
+
+### Code Change Principles
+- **Simplicity First**: Make every task and code change as simple as possible
+- **Minimal Impact**: Changes should affect as little code as possible - only what's necessary
+- **No Shortcuts**: Never use temporary fixes or lazy solutions
+- **Root Cause Focus**: If there's a bug, find and fix the root cause completely
+- **Senior-Level Quality**: Approach every problem with thoroughness and professionalism
+- **Bug Prevention**: Goal is to avoid introducing any new bugs through careful, simple changes
+
+### Problem-Solving Approach
+- Break complex problems into simple, discrete steps
+- Each change should be focused and targeted
+- Prefer incremental improvements over large refactors
+- Think like a senior developer: thorough, careful, and complete
+- Never skip proper investigation or cut corners
+
+## Cost Optimization Preferences
+
+### Efficient API Usage
+- **Batch Operations**: Prefer completing full tasks in one go over multiple incremental asks
+- **Trust the Plan**: Once a plan is approved, execute it fully without intermediate check-ins
+- **Assume Standards**: Follow established patterns and conventions without asking for confirmation
+- **Brief Updates**: Provide concise progress updates; save detailed explanations for the final review
+- **Reference First**: Always check the pattern library and existing documentation before creating new solutions
+- **Complete Execution**: After approval, work through all todo items and only report back when done or if blockers arise
+- **Consolidate Changes**: Group related file changes together rather than asking about each one separately
+- **Leverage Documentation**: Use the comprehensive docs in data-tune-core/ as the source of truth to avoid redundant questions

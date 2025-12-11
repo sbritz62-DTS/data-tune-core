@@ -1,0 +1,42 @@
+# Data Tune Solutions - Python Dependencies
+# Install with: pip install -r requirements.txt
+
+# ===== Core Data Libraries =====
+pandas>=2.0.0
+numpy>=1.24.0
+
+# ===== Database Connectors =====
+pyodbc>=5.0.0              # SQL Server / Azure SQL
+sqlalchemy>=2.0.0          # ORM and connection pooling
+
+# ===== Azure SDK =====
+azure-identity>=1.15.0     # Azure authentication
+azure-keyvault-secrets>=4.7.0  # Key Vault integration
+azure-storage-blob>=12.19.0    # Blob storage (if needed)
+
+# ===== Cloud Platform Connectors =====
+google-cloud-bigquery>=3.14.0  # BigQuery
+snowflake-connector-python>=3.6.0  # Snowflake
+
+# ===== Environment & Config =====
+python-dotenv>=1.0.0       # Load .env files
+
+# ===== Utilities =====
+requests>=2.31.0           # HTTP requests for APIs
+openpyxl>=3.1.0           # Excel file handling
+xlrd>=2.0.1               # Excel reading
+
+# ===== Development & Testing =====
+pytest>=7.4.0             # Testing framework
+pytest-cov>=4.1.0         # Test coverage
+black>=23.12.0            # Code formatting
+pylint>=3.0.0             # Code linting
+mypy>=1.8.0               # Type checking
+
+# ===== Optional - Data Validation =====
+great-expectations>=0.18.0  # Data quality framework (optional)
+
+# ===== Optional - Performance =====
+# fastparquet>=2023.10.0  # Parquet file support
+# pyarrow>=14.0.0         # Apache Arrow (faster pandas operations)
+
