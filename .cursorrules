@@ -123,3 +123,107 @@
 - **Depth varies**: Simple tasks = brief critique, complex tasks = detailed critique
 - **Critical issues**: If plan will definitely fail, revise before presenting
 - **Warnings**: If plan might be inefficient, present both options to user
+
+### ClaudeCode-First Strategy (Rate Limit Prevention)
+
+**The Problem We Solved:**
+- Claude API file operations = API calls = rate limiting + token costs
+- ClaudeCode file operations = local execution = FREE + no limits
+
+**ClaudeCode-First Approach:**
+When tasks involve file operations, default to this workflow:
+1. **Claude designs** the structure/templates (API - necessary)
+2. **User implements** with ClaudeCode (FREE - file creation/editing)
+3. **Claude reviews** the result (API - quality check)
+
+**Result:** 80-95% fewer API calls, zero rate limiting, massive token savings
+
+### When to Use ClaudeCode (Prefer This)
+
+**Always use ClaudeCode for:**
+- Creating multiple new files (5+ files)
+- Batch editing existing files
+- Copying and customizing templates
+- Moving/renaming files or folders
+- Bulk find-and-replace operations
+- Repetitive structural changes
+- Formatting and style fixes
+- Adding boilerplate code to multiple files
+
+**Why:** These are mechanical operations that don't require AI reasoning. Using Claude API here wastes tokens and hits rate limits.
+
+### When to Use Claude API (Necessary)
+
+**Use Claude API only for:**
+- Complex problem solving and architecture decisions
+- Writing business logic and algorithms
+- Understanding/explaining existing code
+- Debugging and root cause analysis
+- Design patterns and best practices
+- Code review and optimization suggestions
+- Generating complex queries or transformations
+
+**Why:** These require AI reasoning and can't be done mechanically.
+
+### Execution Examples
+
+**❌ BAD (API-Heavy, Rate Limit Risk):**
+```
+User: "Create 6 client folders with README files"
+Claude: *creates all 6 folders and 6 files via API* → 12+ API calls, rate limit risk
+```
+
+**✅ GOOD (ClaudeCode-First):**
+```
+User: "Create 6 client folders with README files"
+Claude: "Here's the folder structure and README template. Run these commands:
+         mkdir client-a client-b client-c ...
+         Then copy this template into each README.md"
+User: *executes locally via ClaudeCode* → 0 API file operations
+Claude: "Let me verify the structure looks correct" → 1 API call
+```
+
+**❌ BAD:**
+```
+User: "Update all 10 config files with the new API endpoint"
+Claude: *edits each file one by one* → 10+ API calls
+```
+
+**✅ GOOD:**
+```
+User: "Update all 10 config files with the new API endpoint"
+Claude: "Run this find-and-replace in ClaudeCode:
+         Find: 'old-api.example.com'
+         Replace: 'new-api.example.com'
+         Files: *.config.json"
+User: *executes bulk replace* → 0 API calls
+```
+
+**❌ BAD:**
+```
+User: "Set up the standard project structure for new client"
+Claude: *creates 15 files/folders via API* → 15+ API calls, likely rate limited
+```
+
+**✅ GOOD:**
+```
+User: "Set up the standard project structure for new client"
+Claude: "Copy the template folder:
+         cp -r _core/templates/new-project clients/new-client
+         Then update these 3 values in the config..."
+User: *copies template, makes small edits* → 0 API calls for structure
+Claude: *reviews and suggests any customizations* → 1-2 API calls
+```
+
+### Quick Decision Guide
+
+| Task Type | Use | Why |
+|-----------|-----|-----|
+| Create 1-2 files | Claude API | Low overhead, faster |
+| Create 3+ files | ClaudeCode | Avoid rate limits |
+| Simple find/replace | ClaudeCode | Mechanical operation |
+| Complex refactoring | Claude API | Requires reasoning |
+| Copy/move files | ClaudeCode | Always free locally |
+| Write new logic | Claude API | AI reasoning needed |
+| Format/lint fixes | ClaudeCode | Mechanical operation |
+| Debug complex issue | Claude API | Analysis required |
