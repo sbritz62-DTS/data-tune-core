@@ -1,0 +1,49 @@
+# Data Tune Solutions - Client Rules
+# Client: 2nd City
+
+# Core Workflow (from root .cursorrules)
+# This file extends the master .cursorrules at the workspace root.
+# See: ../../.cursorrules for core workflow rules (self-critique, cost optimization, etc.)
+
+## Client Information
+# **Client Name**: 2nd City
+# **Status**: [Active/Paused/Archived]
+# **Primary Contact**: [NAME] ([EMAIL])
+# **Contract Start**: [DATE]
+
+## Client Preferences
+
+### Tech Stack
+# **Primary Tools**: [To be determined]
+# **Database**: [To be determined]
+# **BI Platform**: [To be determined]
+# **Languages**: [To be determined]
+# **Cloud Provider**: [To be determined]
+
+### Standards & Requirements
+# **Naming Convention**: [To be determined]
+# **Data Residency**: [To be determined]
+# **Security Level**: [Standard/Enhanced/other]
+# **Documentation**: [Required/Optional]
+
+### Communication
+# **Response Time**: [Hours for urgent issues]
+# **Meeting Schedule**: [Weekly/Bi-weekly/Monthly]
+# **Reporting Format**: [Dashboard/Email/Document]
+
+## Project Structure
+# All projects for this client follow this structure:
+# ```
+# 2ndcity/
+#   ├── .cursorrules (this file)
+#   ├── README.md
+#   └── [project-name]/
+#       ├── .cursorrules (project-specific)
+#       ├── README.md
+#       └── [project files]
+# ```
+
+## Additional Notes
+# [Add client-specific information as it becomes available]
+
+

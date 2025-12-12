@@ -1,0 +1,76 @@
+# Data Tune Solutions - Project Rules Template
+# Copy this file to: clients/[client-name]/[project-name]/.cursorrules
+# Then customize with project-specific information
+
+# Context Hierarchy
+# This file extends client rules, which extend master rules.
+# - Master rules: ../../../.cursorrules
+# - Client rules: ../.cursorrules
+# - This file: Project-specific context
+
+## Project Information
+# **Project Name**: [PROJECT_NAME]
+# **Client**: [CLIENT_NAME]
+# **Type**: [Dashboard/Pipeline/Integration/Analysis/Automation]
+# **Status**: [Planning/Development/Testing/Production]
+# **Start Date**: [DATE]
+# **Target Completion**: [DATE]
+
+## Project Scope
+# [Brief description of what this project does]
+# [Problem being solved]
+# [Expected outcomes]
+
+## Technical Details
+
+### Data Sources
+# **Primary**: [Database/API/File source]
+# **Secondary**: [Additional sources if any]
+# **Refresh Schedule**: [Real-time/Hourly/Daily/Weekly/etc.]
+# **Data Volume**: [Size of datasets]
+
+### Deliverables
+# - [ ] [Item 1]
+# - [ ] [Item 2]
+# - [ ] [Item 3]
+# - [ ] [Testing and validation]
+# - [ ] [Documentation]
+
+### Key Stakeholders
+# **Sponsor**: [Name, role]
+# **Users**: [Who will use this, departments]
+# **Technical Contact**: [Name, email]
+# **Business Owner**: [Name, role]
+
+## File Structure
+# ```
+# [project-name]/
+#   ├── src/              [Source code, scripts]
+#   ├── database/         [SQL scripts, migrations, schemas]
+#   ├── reports/          [Power BI files, templates, exports]
+#   ├── docs/             [Additional documentation]
+#   ├── tests/            [Test scripts and data]
+#   └── README.md         [Project overview]
+# ```
+
+## Development Standards
+# - Follow client naming conventions (see client .cursorrules)
+# - Include comments for complex logic
+# - Test incrementally, don't wait until end
+# - Document as you build
+
+## Cost Optimization for This Project
+# - Estimated total tokens: [X,XXX]
+# - Reuse patterns from _core/sql-library/, _core/powerbi-resources/, etc.
+# - Batch related changes together
+# - Reference existing code before creating new
+
+## Related Projects
+# [Links to related work, dependencies, or reference implementations]
+
+## Notes
+# [Any specific requirements, constraints, or context Claude should know]
+# [Common pitfalls or gotchas]
+# [Performance considerations]
+
+

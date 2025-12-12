@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time Tracking App</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>⏱️ Time Tracking App</h1>
+            <p class="subtitle">Manage clients, track time, create invoices</p>
+        </header>
+
+        <!-- Tab Navigation -->
+        <nav class="tabs">
+            <button class="tab-button active" data-tab="clients">
+                👥 Clients
+            </button>
+            <button class="tab-button" data-tab="timesheet">
+                📅 Timesheet
+            </button>
+            <button class="tab-button" data-tab="invoices">
+                📄 Invoices
+            </button>
+        </nav>
+
+        <!-- Tab Content -->
+        <main class="tabs-content">
+            <!-- Clients Tab -->
+            <div id="clients" class="tab-content active" data-tab="clients"></div>
+
+            <!-- Timesheet Tab -->
+            <div id="timesheet" class="tab-content" data-tab="timesheet"></div>
+
+            <!-- Invoices Tab -->
+            <div id="invoices" class="tab-content" data-tab="invoices"></div>
+        </main>
+    </div>
+
+    <!-- Loading Indicator -->
+    <div id="loading" class="loading hidden">
+        <div class="spinner"></div>
+        <p>Loading...</p>
+    </div>
+
+    <!-- Error Message -->
+    <div id="error" class="error-message hidden"></div>
+
+    <!-- Scripts -->
+    <script src="/static/js/clients.js"></script>
+    <script src="/static/js/timesheet.js"></script>
+    <script src="/static/js/invoices.js"></script>
+    <script src="/static/js/app.js"></script>
+</body>
+</html>

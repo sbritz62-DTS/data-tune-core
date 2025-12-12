@@ -1,0 +1,90 @@
+# [PROJECT_NAME]
+
+## Overview
+[What does this project do? Who is it for? What problem does it solve?]
+
+## Status
+- **Phase**: [Planning/Development/Testing/Production]
+- **Started**: [Date]
+- **Last Updated**: [Date]
+- **Target Completion**: [Target date or "Ongoing"]
+- **Client**: [CLIENT_NAME]
+
+## Quick Start
+[How to run/use this project - 5-10 lines maximum]
+
+## Data Sources
+- **[Source 1]**: [Description of what data it provides]
+- **[Source 2]**: [Description of what data it provides]
+- **Refresh Schedule**: [How often data updates]
+
+## Deliverables
+- [Deliverable 1] - [Description]
+- [Deliverable 2] - [Description]
+- [Deliverable 3] - [Description]
+
+## File Structure
+```
+[project-name]/
+├── src/              [Source code, scripts, applications]
+├── database/         [SQL scripts, migrations, schemas]
+├── reports/          [Power BI files, dashboards, exports]
+├── docs/             [Additional documentation, data dictionaries]
+├── tests/            [Test scripts and test data]
+├── .cursorrules      [Project-specific rules and context]
+└── README.md         [This file]
+```
+
+## Key Features
+- [Feature 1]
+- [Feature 2]
+- [Feature 3]
+
+## Dependencies
+### Software/Libraries
+- [Software 1]: [Version/purpose]
+- [Software 2]: [Version/purpose]
+
+### Data Dependencies
+- [Data source 1]: [Dependency description]
+- [Data source 2]: [Dependency description]
+
+### Other Projects
+- [Related project 1]: [How it relates]
+- [Related project 2]: [How it relates]
+
+## Setup Instructions
+1. [Step 1]
+2. [Step 2]
+3. [Step 3]
+
+## Maintenance
+- **Refresh Schedule**: [How often data updates]
+- **Monitoring**: [How to check if working correctly]
+- **Update Frequency**: [How often the project itself is updated]
+- **Contacts**: [Who to contact for issues/questions]
+
+## Performance Notes
+- [Any performance considerations]
+- [Data volume and refresh times]
+- [Query optimization notes]
+
+## Recent Changes
+### [Date] - [Version/Description]
+- [Change 1]
+- [Change 2]
+- [Change 3]
+
+### [Date] - [Version/Description]
+- [Change 1]
+
+## Related Projects
+- [Link to related project 1]
+- [Link to related project 2]
+
+## Questions?
+See `.cursorrules` in this folder for context and standards.
+See `clients/[client-name]/` for client-level documentation.
+See `_core/docs/` for general workflow and best practices.
+
+

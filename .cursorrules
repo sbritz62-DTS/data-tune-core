@@ -43,9 +43,14 @@
 
 ## Communication Preferences
 - **Code Style**: Clear and well-commented, prefer readability over brevity
-- **Explanation Level**: Practical, applied explanations with real-world data context
-- **Default Mode**: Implement directly for standard patterns, ask for complex architectural decisions
+- **Explanation Level**: Full explanations during planning/review, minimal during execution
+- **Approval Required**: Always get approval before starting work (user is learning)
 - **Examples**: Prefer concrete examples with sample data/schemas
+
+### Communication Strategy (Balanced for Beginners)
+- **Before Execution**: Full warnings, complete plans with self-critique, wait for approval
+- **During Execution**: Silent (no progress updates unless blocked or error occurs)
+- **After Execution**: Comprehensive review with all changes, token usage, and important notes
 
 ## Data Engineering Best Practices
 - Always consider data refresh schedules and dependencies
@@ -73,10 +78,10 @@
 ### Task Management Process
 1. **Plan First**: Before starting any task, think through the problem, read relevant files, and create a plan in `tasks/todo.md`
 2. **Create Todo List**: The plan must include a checklist of specific todo items
-3. **Get Approval**: Present the plan and wait for verification before beginning work
-4. **Execute & Update**: Work through todo items, checking them off as completed
-5. **Communicate Progress**: Provide high-level explanations at each step (not overly detailed)
-6. **Document Results**: Add a review section to `tasks/todo.md` summarizing changes and relevant information
+3. **Self-Critique** (MANDATORY): Review own plan for cost efficiency, risks, missing context, and scope issues
+4. **Get Approval**: Present the plan AND self-critique, wait for verification before beginning work
+5. **Execute Silently**: Work through todo items without intermediate updates unless blocked
+6. **Document Results**: Add a review section to `tasks/todo.md` with summary, files changed, and token usage
 
 ### Code Change Principles
 - **Simplicity First**: Make every task and code change as simple as possible
@@ -99,8 +104,22 @@
 - **Batch Operations**: Prefer completing full tasks in one go over multiple incremental asks
 - **Trust the Plan**: Once a plan is approved, execute it fully without intermediate check-ins
 - **Assume Standards**: Follow established patterns and conventions without asking for confirmation
-- **Brief Updates**: Provide concise progress updates; save detailed explanations for the final review
+- **Silent Execution**: No progress updates during execution; report comprehensively at completion
 - **Reference First**: Always check the pattern library and existing documentation before creating new solutions
 - **Complete Execution**: After approval, work through all todo items and only report back when done or if blockers arise
 - **Consolidate Changes**: Group related file changes together rather than asking about each one separately
 - **Leverage Documentation**: Use the comprehensive docs in data-tune-core/ as the source of truth to avoid redundant questions
+
+### Proactive Cost Warnings
+- **Always warn** before starting if: reading 5+ files, estimated >3,000 tokens, missing context, mixed tasks, large files without line numbers
+- **Include estimates** in warnings: "This will cost ~X,XXX tokens"
+- **Suggest optimizations**: "Could be ~X,XXX tokens if you provide [specific context]"
+- **Wait for confirmation** after warning: user can proceed, optimize, or revise
+
+### Self-Critique Requirements
+- **Mandatory for every plan** - no exceptions
+- **Focus areas**: Cost efficiency, approach validation, missing context, scope check
+- **Format**: Estimate tokens, list issues, suggest optimizations, provide recommendation
+- **Depth varies**: Simple tasks = brief critique, complex tasks = detailed critique
+- **Critical issues**: If plan will definitely fail, revise before presenting
+- **Warnings**: If plan might be inefficient, present both options to user

@@ -1,0 +1,71 @@
+# [CLIENT_NAME]
+
+## Overview
+[Brief description of the client and your work with them]
+
+## Client Information
+- **Name**: [CLIENT_NAME]
+- **Industry**: [Industry]
+- **Primary Contact**: [Name]
+- **Email**: [email@client.com]
+- **Phone**: [Optional]
+- **Location**: [City, State/Country]
+
+## Relationship
+- **Since**: [Start date]
+- **Status**: [Active/Paused/Archived]
+- **Contract Type**: [Retainer/Project-based/Ad-hoc]
+
+## Tech Stack
+- **Primary Database**: [SQL Server/Snowflake/BigQuery/etc.]
+- **BI Tools**: [Power BI/Tableau/etc.]
+- **Cloud Platform**: [Azure/AWS/GCP/None]
+- **Other Tools**: [List any other critical tools]
+
+## Active Projects
+
+### [Project Name 1]
+- **Status**: [In Progress/Completed/Planned]
+- **Type**: [Dashboard/Pipeline/Analysis/etc.]
+- **Last Updated**: [Date]
+- **Location**: `[project-name]/`
+- **Description**: [Brief description]
+
+### [Project Name 2]
+- **Status**: [In Progress/Completed/Planned]
+- **Type**: [Dashboard/Pipeline/Analysis/etc.]
+- **Last Updated**: [Date]
+- **Location**: `[project-name]/`
+- **Description**: [Brief description]
+
+## Planned/Future Projects
+- [Project idea 1]
+- [Project idea 2]
+- [Project idea 3]
+
+## Standards & Conventions
+- **Naming**: [Naming convention for this client]
+- **Data Residency**: [Region/compliance requirements]
+- **Security Level**: [Standard/Enhanced/etc.]
+
+## Key Contacts
+| Role | Name | Email | Phone |
+|------|------|-------|-------|
+| Primary | [Name] | [email] | [phone] |
+| Technical | [Name] | [email] | [phone] |
+| Business Owner | [Name] | [email] | [phone] |
+
+## Documentation
+- See individual project README.md files for project details
+- See `.cursorrules` in this folder for client-specific rules
+- See `_core/docs/` for general workflow and best practices
+
+## Important Notes
+[Any important client-specific information, preferences, or history]
+
+## Change Log
+### [Date] - [Description]
+- [Change 1]
+- [Change 2]
+
+

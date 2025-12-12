@@ -1,0 +1,65 @@
+# Data Tune Solutions - Internal Client Rules
+
+# Core Workflow (from root .cursorrules)
+# This file extends the master .cursorrules at the workspace root.
+# See: ../../.cursorrules for core workflow rules (self-critique, cost optimization, etc.)
+
+## Client Information
+# **Client Name**: Data Tune Solutions (Internal)
+# **Type**: Internal / Learning Projects
+# **Primary Focus**: Building reusable patterns and tools
+# **Status**: Active
+
+## Client Preferences
+
+### Tech Stack
+# **Primary Tools**: Azure, SQL Server, Power BI
+# **Database**: SQL Server
+# **BI Platform**: Power BI
+# **Languages**: SQL (T-SQL), Python, DAX, M/Power Query
+# **Cloud Provider**: Azure
+
+### Standards & Requirements
+# **Naming Convention**: Clear, descriptive naming; use CTEs over nested subqueries
+# **Data Residency**: N/A (internal testing)
+# **Security Level**: Standard
+# **Documentation**: Required for all patterns and tools
+# **Code Review**: Best practice (self-review)
+
+### Communication
+# **Response Time**: Immediate (internal)
+# **Reporting**: To self through documentation
+# **Version Control**: Git with meaningful commit messages
+
+## Project Structure
+# All projects for Data Tune Solutions follow this structure:
+# ```
+# dts/
+#   ├── .cursorrules (this file)
+#   ├── README.md
+#   └── [project-name]/
+#       ├── .cursorrules (project-specific)
+#       ├── README.md
+#       └── [project files]
+# ```
+
+## Special Purpose
+# DTS projects serve as:
+# - Learning and experimentation space
+# - Pattern library development
+# - Tool and utility creation
+# - Reference implementations for clients
+
+## Rate Limiting & Cost Optimization
+# These internal projects benefit from cost optimization rules:
+# - Batch operations when possible
+# - Reference existing patterns to avoid duplication
+# - Test on small datasets first
+# - Document patterns for reuse
+
+## Additional Notes
+# - All completed patterns should be added to _core/sql-library, _core/powerbi-resources, etc.
+# - Document lessons learned for client reference
+# - Keep project complexity reasonable for learning purposes
+
+

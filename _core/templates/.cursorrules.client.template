@@ -1,0 +1,60 @@
+# Data Tune Solutions - Client Rules Template
+# Copy this file to: clients/[client-name]/.cursorrules
+# Then customize with client-specific information
+
+# Core Workflow (from root .cursorrules)
+# This file extends the master .cursorrules at the workspace root.
+# See: ../../.cursorrules for core workflow rules (self-critique, cost optimization, etc.)
+
+## Client Information
+# **Client Name**: [CLIENT_NAME]
+# **Industry**: [INDUSTRY]
+# **Primary Contact**: [NAME] ([EMAIL])
+# **Contract Start**: [DATE]
+# **Status**: [Active/Paused/Archived]
+
+## Client Preferences
+
+### Tech Stack
+# **Primary Tools**: [Azure/Snowflake/BigQuery/etc.]
+# **Database**: [SQL Server/PostgreSQL/Snowflake/etc.]
+# **BI Platform**: [Power BI/Tableau/Looker/etc.]
+# **Languages**: [SQL/Python/DAX/M/etc.]
+# **Cloud Provider**: [Azure/AWS/GCP/None]
+
+### Standards & Requirements
+# **Naming Convention**: [Pattern, e.g., CLIENT_ObjectType_Name]
+# **Data Residency**: [Region/compliance requirements]
+# **Security Level**: [Standard/Enhanced/SOC2/etc.]
+# **Documentation**: [Required/Optional, format]
+# **Code Review**: [Required/Optional]
+
+### Communication
+# **Response Time**: [Hours for urgent issues]
+# **Meeting Schedule**: [Weekly/Bi-weekly/Monthly/etc.]
+# **Reporting Format**: [Dashboard/Email/Document/etc.]
+# **Contact Preference**: [Email/Phone/Slack/etc.]
+
+## Project Structure
+# All projects for this client follow this structure:
+# ```
+# [client-name]/
+#   ├── .cursorrules (this file)
+#   ├── README.md
+#   └── [project-name]/
+#       ├── .cursorrules (project-specific)
+#       ├── README.md
+#       └── [project files]
+# ```
+
+## Rate Limiting & Cost Optimization
+# This client uses the cost optimization rules from master .cursorrules
+# Additional considerations:
+# - Batch operations when possible
+# - Estimate costs before starting tasks
+# - Reference existing patterns to avoid duplication
+
+## Additional Notes
+# [Any client-specific information, preferences, or constraints]
+
+
